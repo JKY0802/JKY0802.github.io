@@ -14,18 +14,10 @@ html {
 }
 
 
-/* 版权链接去掉下划线 */
-.layout_post .post-copyright .post-copyright-info a {
-  text-decoration: none;
-}
-
-
 /* 博主昵称颜色 --也就是首页侧边栏头像下面那个昵称*/
 .author-info__name {
   color: #BA55D3;
 }
-
-
 
 
 body,
