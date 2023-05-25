@@ -27,9 +27,9 @@ html {
 
 
 /* 页脚透明 */
-/* #footer {
+#footer {
   background: transparent !important;
-} */
+}
 
 
 /* 首页中间打字效果上方 */
@@ -128,7 +128,7 @@ a {
   display: block;
   width: 100%;
   height: 100%;
-  background: transparent !important;
+  /* background: transparent !important; */
   /*这个rgba可以自己改*/
   content: '';
 }
