@@ -1,4 +1,3 @@
-http://example.com/2023/05/30/myblog/
 http://example.com/messageboard/index.html
 http://example.com/2023/05/24/hello-world/
 http://example.com/myself/index.html
