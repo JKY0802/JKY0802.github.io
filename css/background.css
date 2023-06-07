@@ -106,3 +106,9 @@ img {
   color: #fff;
   background-color: #49b1f5;
 }
+
+/* 翻页按钮居中 */
+#pagination {
+	width: 100%;
+	margin: auto;
+  }
