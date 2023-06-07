@@ -1,3 +1,7 @@
+http://example.com/shuoshuo/index.html
+http://example.com/photos/index.html
+http://example.com/music/index.html
+http://example.com/movies/index.html
 http://example.com/2023/06/07/%E6%88%91%E7%9A%84%E6%97%A5%E5%BF%97/
 http://example.com/2023/05/24/hello-world/
 http://example.com/messageboard/index.html
