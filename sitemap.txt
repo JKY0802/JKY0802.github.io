@@ -1,4 +1,6 @@
-http://example.com/2023/06/08/React%E5%AD%A6%E4%B9%A0/
+http://example.com/2023/06/08/NodeJs-%E5%AD%A6%E4%B9%A0/
+http://example.com/2023/06/08/React-%E5%AD%A6%E4%B9%A0/
+http://example.com/categories/index.html
 http://example.com/2023/05/24/hello-world/
 http://example.com/2023/06/07/%E6%88%91%E7%9A%84%E6%97%A5%E5%BF%97/
 http://example.com/shuoshuo/index.html
@@ -11,5 +13,8 @@ http://example.com/myself/index.html
 http://example.com/tags/index.html
 http://example.com/timeline/index.html
 http://example.com/link/index.html
-http://example.com/categories/index.html
 http://example.com/
+http://example.com/tags/React/
+http://example.com/tags/NodeJs/
+http://example.com/categories/%E5%89%8D%E7%AB%AF/
+http://example.com/categories/%E5%90%8E%E7%AB%AF/
