@@ -202,14 +202,14 @@ h6::before {
 
 /* 个人信息卡片背景图 */
 [data-theme="light"] #aside-content>.card-widget.card-info {
-  background-image: url(https://sourcebucket.s3.ladydaily.com/img/snowflower.webp);
+  background-image: url("../img/writeBJ.jpg");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
 }
 
 [data-theme="dark"] #aside-content>.card-widget.card-info {
-  background-image: url(https://sourcebucket.s3.ladydaily.com/img/aurora.webp);
+  background-image: url("../img/black.png");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
