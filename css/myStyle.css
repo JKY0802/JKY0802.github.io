@@ -86,3 +86,29 @@ div#runtime {
 }
 
 
+.fa-regular, .far {
+  margin-right: 5px;
+}
+.article-meta {
+  margin-left: 5px;
+}
+.article-meta-separator {
+  margin:0 3px;
+}
+
+/* 主页文章卡片擦亮动画效果 */
+#recent-posts > .recent-post-item:not(a)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+  background: linear-gradient(to right, transparent, white, transparent);
+  transform: translateX(-200%);
+  transition: transform 0.5s linear;
+  z-index: 1;
+}
+#recent-posts > .recent-post-item:not(a):hover::before {
+  transform: translateX(100%) skewX(-60deg);
+}
