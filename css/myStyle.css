@@ -55,3 +55,32 @@ div#runtime {
 /* #footer:before {
   content: none !important;
 } */
+
+#recent-posts>.recent-post-item {
+  position: relative;
+}
+
+/* 最新文章图标 */
+.newPost-left,
+.newPost-right {
+  position: absolute;
+  top: 0;
+  color: white;
+  padding: 0 15px;
+  background-color: #49b1f5;
+  border-radius: 0 0 10px 10px;
+}
+
+.newPost-left {
+  left: 15px;
+}
+
+.newPost-right {
+  right: 15px;
+}
+
+
+.loading-img {
+  background: url(../img/favicon.jpg) no-repeat center center;
+  background-size: cover;
+}
