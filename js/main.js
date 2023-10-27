@@ -458,8 +458,12 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isExpand) return
         let parent = currentActive.parentNode
 
-        for (; !parent.matches('.toc'); parent = parent.parentNode) {
-          if (parent.matches('li')) parent.classList.add('active')
+        try {
+          for (; !parent.matches('.toc'); parent = parent.parentNode) {
+            if (parent.matches('li')) parent.classList.add('active')
+          }
+        } catch {
+          
         }
       }
     }
