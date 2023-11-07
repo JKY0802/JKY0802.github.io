@@ -202,14 +202,14 @@ h6::before {
 
 /* 个人信息卡片背景图 */
 [data-theme="light"] #aside-content>.card-widget.card-info {
-  background-image: url("https://moonshuo.cn/css/bg.jpg");
+  background-image: url("https://sourcebucket.s3.bitiful.net/img/springBg.png");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
 }
 
 [data-theme="dark"] #aside-content>.card-widget.card-info {
-  background-image: url("https://moonshuo.cn/css/bbg.png");
+  background-image: url("https://sourcebucket.s3.bitiful.net/img/aurora.webp");
   background-repeat: no-repeat;
   background-attachment: inherit;
   background-size: 100%;
@@ -219,4 +219,37 @@ h6::before {
 .author_top:hover {
   background: url(https://tuchuang.voooe.cn/images/2023/01/02/snow.gif);
   background-size: cover;
+}
+
+
+/* 全局宽度 */
+.layout {
+  max-width: 1400px;
+  margin-top: 130px;
+}
+
+/* 侧边卡片栏宽度 */
+.aside-content {
+  max-width: 318px;
+  min-width: 300px;
+}
+
+/* 平板尺寸自适应(不启用侧边栏宽度限制) */
+@media screen and (max-width: 900px) {
+  .aside-content {
+    max-width: none !important;
+    padding: 0 5px 0 5px;
+  }
+}
+
+
+/* 除了首页以外其他页面隐藏卡片，并采用宽屏显示 */
+#archive,
+#page,
+#category,
+#tag {
+  width: 100%;
+}
+.page:not(.page.home) .aside-content {
+  display: none;
 }
