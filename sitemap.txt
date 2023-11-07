@@ -24,8 +24,8 @@ http://example.com/tags/index.html
 http://example.com/link/index.html
 http://example.com/
 http://example.com/tags/%E5%89%8D%E7%AB%AF/
-http://example.com/tags/React/
 http://example.com/tags/NodeJs/
+http://example.com/tags/React/
 http://example.com/tags/TypeScript/
 http://example.com/tags/Vue/
 http://example.com/tags/uniApp/
