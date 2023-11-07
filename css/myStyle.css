@@ -14,7 +14,7 @@
 
 #web_bg {
   /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
-  background-image: url(../img/bj2.jpg);
+  background-image: url(https://z1.ax1x.com/2023/05/02/p9G2jjU.jpg);
   /* background-size: 400% 400%;
   animation: gradientBG 15s ease infinite; */
 }
@@ -570,7 +570,7 @@ div#runtime {
   width: 100%;
   position: absolute;
   left: 0;
-  bottom: -100px;
+  bottom: -11px;
   z-index: 5;
 }
 .waves-area .waves-svg {
@@ -640,3 +640,38 @@ div#runtime {
 }
 
 /* 波浪样式 */
+
+
+
+#nav .menus_items {
+  display: inline;
+  position: absolute;
+  text-align: center;
+  width: fit-content;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.menus_item_child li:not(#sidebar-menus li){
+  float: left;
+  border-radius: 6px!important;
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  -ms-border-radius: 6px!important;
+  -o-border-radius: 6px!important;
+}
+.menus_item_child:not(#sidebar-menus ul){
+  left:calc(-50%)!important;/*这是估算值，为了保持元素居中的，如果不合适可以自己调*/
+}
+/*导航条间距*/
+#nav .menus_items .menus_item{
+  padding: 0 0 0 14px;
+}
+#nav .menus_items .menus_item .menus_item_child{
+  float: left;
+  border-radius: 6px!important;
+  -webkit-border-radius: 6px!important;
+  -moz-border-radius: 6px!important;
+  -ms-border-radius: 6px!important;
+  -o-border-radius: 6px!important;
+}
