@@ -2,6 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://example.com/2023/05/24/hello-world/</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/shuoshuo/index.html</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/about/index.html</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.com/2023/08/27/H5-%E5%AD%A6%E4%B9%A0/</loc>
+    
+    <lastmod>2023-12-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://example.com/2023/10/29/vue3+vite%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</loc>
     
     <lastmod>2023-11-28</lastmod>
@@ -65,15 +101,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/shuoshuo/index.html</loc>
-    
-    <lastmod>2023-11-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/2023/11/06/%E8%BF%91%E5%86%B5%E8%AE%B0%E4%BA%8B%20-%201/</loc>
     
     <lastmod>2023-11-13</lastmod>
@@ -86,15 +113,6 @@
     <loc>http://example.com/2023/06/08/React-%E5%AD%A6%E4%B9%A0/</loc>
     
     <lastmod>2023-11-09</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/myself/index.html</loc>
-    
-    <lastmod>2023-11-08</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -146,24 +164,6 @@
   </url>
   
   <url>
-    <loc>http://example.com/2023/08/27/H5-%E5%AD%A6%E4%B9%A0/</loc>
-    
-    <lastmod>2023-10-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/about/index.html</loc>
-    
-    <lastmod>2023-10-27</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://example.com/background/index.html</loc>
     
     <lastmod>2023-10-27</lastmod>
@@ -203,15 +203,6 @@
     <loc>http://example.com/movies/index.html</loc>
     
     <lastmod>2023-06-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://example.com/2023/05/24/hello-world/</loc>
-    
-    <lastmod>2023-06-12</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
