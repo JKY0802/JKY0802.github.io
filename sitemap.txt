@@ -28,12 +28,12 @@ http://example.com/music/index.html
 http://example.com/link/index.html
 http://example.com/
 http://example.com/tags/NodeJs/
-http://example.com/tags/%E5%89%8D%E7%AB%AF/
-http://example.com/tags/React/
 http://example.com/tags/Vue/
 http://example.com/tags/TypeScript/
 http://example.com/tags/uniApp/
 http://example.com/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/
-http://example.com/categories/%E5%89%8D%E7%AB%AF/
+http://example.com/tags/%E5%89%8D%E7%AB%AF/
+http://example.com/tags/React/
 http://example.com/categories/%E5%90%8E%E7%AB%AF/
+http://example.com/categories/%E5%89%8D%E7%AB%AF/
 http://example.com/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/
