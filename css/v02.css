@@ -1,0 +1,201 @@
+.speak-btn {
+  position: absolute;
+  right: 60px;
+  bottom: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.speak-btn:hover {
+  opacity: 1;
+}
+
+.speech-status {
+  position: fixed;
+  bottom: 60px;
+  left: 20px;
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px var(--shadow-color);
+  z-index: 1000;
+}
+
+
+.ai-message pre {
+  /* background: #fff; */
+  /* color: #d4d4d4; */
+  padding: 10px;
+  overflow-x: auto;
+  border-radius: 6px;
+}
+
+.ai-message code {
+  /* background: #eee; */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+
+
+/* 整体消息容器 */
+.message {
+  margin: 12px 0;
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+/* 用户与 AI 消息背景不同 */
+.user-message {
+  color: var(--user-text-color);
+  align-self: flex-end;
+}
+
+.ai-message {
+  background-color: #ffffff;
+  color: var(--ai-text-color);
+  align-self: flex-start;
+}
+
+
+/* 内容区 */
+.content {
+  max-width: 80%;
+  position: relative;
+  word-wrap: break-word;
+}
+
+/* footer 容器放置时间戳和按钮 */
+.footer-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+  font-size: 0.85em;
+  color: #666;
+  padding: 10px 0;
+}
+
+.footer-container button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.footer-container button:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Markdown 渲染相关样式 */
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  margin: 0.5em 0;
+  font-weight: bold;
+}
+
+.hljs {
+  font-family: Menlo, Monaco, Consolas, monospace;
+}
+
+.content p {
+  margin: 0.5em 0;
+}
+
+/* 代码块容器 */
+.code-block-container {
+  position: relative;
+  margin: 1em 0;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.code-block-container pre {
+  margin: 0;
+  padding: 12px;
+  overflow-x: auto;
+}
+
+/* 复制按钮在代码块右上角 */
+.copy-code-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.code-block-container:hover .copy-code-btn {
+  display: block;
+}
+
+/* 行内代码 */
+.content code {
+  /* background: #f1f1f1; */
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+/* .footer-container .message-footer-btn {
+  width: 100px;
+} */
+
+.copy-btn,
+.speak-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.copy-btn:hover,
+.speak-btn:hover {
+  opacity: 1;
+}
+
+
+/* 增加一个语言切换按钮样式 */
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+
+.input-box::placeholder {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  .input-box::placeholder {
+    font-size: 14px;
+    /* 小屏幕缩小 */
+  }
+}

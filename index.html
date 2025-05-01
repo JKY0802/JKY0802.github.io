@@ -1,420 +1,141 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>禹之心语</title><meta name="author" content="JforikY"><meta name="copyright" content="JforikY"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="归途也还可爱">
-<meta property="og:type" content="website">
-<meta property="og:title" content="禹之心语">
-<meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="禹之心语">
-<meta property="og:description" content="归途也还可爱">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/avatar.jpg">
-<meta property="article:author" content="JforikY">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/img/avatar.jpg"><link rel="shortcut icon" href="/img/favicon.jpg"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.json","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
-  copy: {
-    success: '复制成功',
-    error: '复制错误',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: {"limitCount":50,"languages":{"author":"作者: JforikY","link":"链接: ","source":"来源: 禹之心语","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
-  lightbox: 'fancybox',
-  Snackbar: undefined,
-  source: {
-    justifiedGallery: {
-      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
-      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
-    }
-  },
-  isPhotoFigcaption: false,
-  islazyload: false,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: true,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '禹之心语',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: false,
-  isToc: false,
-  postUpdate: '2024-08-10 23:54:13'
-}</script><noscript><style type="text/css">
-  #nav {
-    opacity: 1
-  }
-  .justified-gallery img {
-    opacity: 1
-  }
+<!DOCTYPE html>
+<html lang="zh-CN">
 
-  #recent-posts time,
-  #post-meta time {
-    display: inline !important
-  }
-</style></noscript><script>(win=>{
-    win.saveToLocal = {
-      set: function setWithExpiry(key, value, ttl) {
-        if (ttl === 0) return
-        const now = new Date()
-        const expiryDay = ttl * 86400000
-        const item = {
-          value: value,
-          expiry: now.getTime() + expiryDay,
-        }
-        localStorage.setItem(key, JSON.stringify(item))
-      },
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuki AI - 探索未知之境</title>
+  <link rel="icon" href="/image/favicon.png" type="image/x-icon">
 
-      get: function getWithExpiry(key) {
-        const itemStr = localStorage.getItem(key)
+  <!-- Highlight.js 库及样式 -->
+  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script> -->
 
-        if (!itemStr) {
-          return undefined
-        }
-        const item = JSON.parse(itemStr)
-        const now = new Date()
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-light.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 
-        if (now.getTime() > item.expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return item.value
-      }
-    }
-  
-    win.getScript = url => new Promise((resolve, reject) => {
-      const script = document.createElement('script')
-      script.src = url
-      script.async = true
-      script.onerror = reject
-      script.onload = script.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        script.onload = script.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(script)
-    })
-  
-    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
-      const link = document.createElement('link')
-      link.rel = 'stylesheet'
-      link.href = url
-      if (id) link.id = id
-      link.onerror = reject
-      link.onload = link.onreadystatechange = function() {
-        const loadState = this.readyState
-        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-        link.onload = link.onreadystatechange = null
-        resolve()
-      }
-      document.head.appendChild(link)
-    })
-  
-      win.activateDarkMode = function () {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = function () {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-          const now = new Date()
-          const hour = now.getHours()
-          const isNight = hour <= 6 || hour >= 20
-          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
-          else if (t === 'light') activateLightMode()
-          else activateDarkMode()
-        
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-    const detectApple = () => {
-      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-    })(window)</script><link rel="stylesheet" href="/css/modify.css">
-</head><body><canvas id="universe"></canvas> <script defer="" src="/js/universe.js"></script>
-<link rel="stylesheet" href="/css/background.css"> <link rel="stylesheet" href="/css/myStyle.css">
-<link rel="stylesheet" href="/css/font.css">
-<link rel="stylesheet" href="/css/universe.css"> <link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@latest/hexo/css/loading_style_1.css"> <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zyoushuo/Blog@latest/hexo/css/loading_style_2.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/mainColor/heoMainColor.css"> <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/poem.css"><meta name="generator" content="Hexo 6.3.0"><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><div class="loading-img"></div><div class="loading-image-dot"></div></div></div><script>const preloader = {
-  endLoading: () => {
-    document.body.style.overflow = 'auto';
-    document.getElementById('loading-box').classList.add("loaded")
-  },
-  initLoading: () => {
-    document.body.style.overflow = '';
-    document.getElementById('loading-box').classList.remove("loaded")
 
-  }
-}
-window.addEventListener('load',()=> { preloader.endLoading() })
+  <canvas id="heartCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;"></canvas>
 
-if (true) {
-  document.addEventListener('pjax:send', () => { preloader.initLoading() })
-  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
-}</script><script>window.paceOptions = {
-  restartOnPushState: false
-}
 
-document.addEventListener('pjax:send', () => {
-  Pace.restart()
-})
-</script><link rel="stylesheet" href="/css/progress_bar.css"><script src="https://cdn.jsdelivr.net/npm/pace-js/pace.min.js"></script>
-  <div id="loader">
-    
+
+  <!-- marked -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+  <!-- 01 -->
+  <link rel="stylesheet" href="/css/v01.css">
+
+  <!-- 02 -->
+  <link rel="stylesheet" href="/css/v02.css">
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1 data-i18n="headerTitle">Yuki AI</h1>
+      <div class="header-buttons">
+        <button class="clear-btn" onclick="clearChat()" title="清空聊天记录">
+          <span class="icon">🗑️</span>
+          <span class="text" data-i18n="clearChat">清空聊天</span>
+        </button>
+        <button class="theme-toggle" onclick="toggleTheme()" title="切换主题">
+          <span class="icon">🌞</span>
+          <span class="text" data-i18n="switchTheme">切换主题</span>
+        </button>
+
+        <!-- <button class="read-novels" onclick="loadNovelExample()">📚 看小说</button> -->
+
+        <button class="donate-btn" onclick="openDonateModal()" title="支持打赏">
+          <span class="icon">💖</span>
+          <span class="text" data-i18n="donate">打赏</span>
+        </button>
+
+        <button class="contact-btn" onclick="openContactModal()" title="联系我们">
+          <span class="icon">📞</span>
+          <span class="text" data-i18n="contact">联系我们</span>
+        </button>
+      </div>
+      <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">EN</button>
+    </div>
+    <audio id="loveSong" src="/music/唯一.mp3" preload="auto"></audio>
+
+
+    <div class="chat-container" id="chatContainer"></div>
+
+    <div class="input-container">
+      <div class="input-wrapper">
+        <textarea class="input-box" placeholder="输入你的问题..." id="input" rows="1" oninput="autoResize(this)"
+          onkeydown="handleKeyDown(event)" data-i18n-placeholder="inputPlaceholder"></textarea>
+        <button class="voice-btn" onclick="toggleVoiceInput()" title="语音输入">
+          🎤
+        </button>
+
+        <button class="send-btn" id="sendBtn" onclick="sendMessage()" data-i18n="send">发送</button>
+      </div>
+    </div>
   </div>
 
-  <script>
-    var endLoading = function () {
-      document.body.style.overflow = 'auto';
-      document.getElementById('loader').classList.add("loading");
-    }
-    window.addEventListener('load', endLoading);
-  </script>
-  <div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 隧道</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 我的</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-graduation-cap"></i><span> 碎碎念想</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 小相薄</span></a></li><li><a class="site-page child" href="/equipment/"><i class="fa-fw fa-fw heofont icon-tools-fill"></i><span> 我的装备</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-paper-plane"></i><span> 友人帐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div></div></div><div class="page home" id="body-wrap"><header class="full_page" id="page-header" style="background: transparent"><nav id="nav"><span id="blog-info"><a href="/" title="禹之心语"><span class="site-name">禹之心语</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 文章</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 隧道</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 我的</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/shuoshuo/"><i class="fa-fw fa fa-graduation-cap"></i><span> 碎碎念想</span></a></li><li><a class="site-page child" href="/photos/"><i class="fa-fw fa fa-camera-retro"></i><span> 小相薄</span></a></li><li><a class="site-page child" href="/equipment/"><i class="fa-fw fa-fw heofont icon-tools-fill"></i><span> 我的装备</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-paper-plane"></i><span> 友人帐</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/messageboard/"><i class="fa-fw fa fa-comment-dots"></i><span> 留言板</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fa fa-link"></i><span> 友链</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">禹之心语</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/JKY0802" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/jky0802@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2024/08/10/GIS%E5%AD%A6%E4%B9%A0%E4%B9%8BWebGIS%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="WebGIS开发基础"><img class="post-bg" src="/images/Gis/background.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WebGIS开发基础"></a></div><div class="recent-post-info"><span class="newPost-right">最新</span><a class="article-title" href="/2024/08/10/GIS%E5%AD%A6%E4%B9%A0%E4%B9%8BWebGIS%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="WebGIS开发基础">WebGIS开发基础</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-10T15:16:25.000Z" title="发表于 2024-08-10 23:16:25">2024-08-10</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">什么是GIS平台GIS平台，也叫基础平台，系统平台，是指Map info、Arc info、Supermap、MapGIS等GIS平台，是成型的商品软件。这些软件具有强大的通用的GIS功能，也可以在其上用开发工具.NET、JAVA Delphi等等，开发出各种GIS软件。然而GIS的开发平台众多、开发平台也各有优势、在进行GS开发过程中、选择一个好的平台无疑是尤为重要的。
-
-Tips：GIS软件一般是指应用到用户那里的，结合用户的业务开发出来的软件。例如在电力、水利、国土资源、交通等等行业正在应用的软件，这些软件一般都是在GIS平台上开发的，应用的时候要先安装GIS平台，安装开发人员再在平台之上开发出来的软件才能运行。国外的常用的GlS软件有AutoCAD Map3d、ArcGIS、Maplnf等，而国内比较知名的GIS软件则是Supermap、MapGIS、GeoStar等。
-
-什么是GIS应用平台有些GIS应用方向会提供自己的平台，比如，地图导航应用高德开放平台(JS API)、百度地图开放平台，这些平台面向大众提供开放的API接口服务。
-
-Tips：解决将地理信息通过web技术展 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/08/10/Sequelize-%E5%AD%A6%E4%B9%A0/" title="Sequelize-学习"><img class="post-bg" src="/images/Sequelize/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sequelize-学习"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/08/10/Sequelize-%E5%AD%A6%E4%B9%A0/" title="Sequelize-学习">Sequelize-学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-08-10T14:53:25.000Z" title="发表于 2024-08-10 22:53:25">2024-08-10</time></span></div><div class="content">简介Sequelize 是一个基于 promise 的 Node.js ORM, 目前支持 Postgres, MySQL, MariaDB, SQLite 以及 Microsoft SQL Server. 它具有强大的事务支持, 关联关系, 预读和延迟加载,读取复制等功能。
-Sequelize 遵从 语义版本控制。 支持 Node v10 及更高版本以便使用 ES6 功能。
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2024/04/15/Koa2-%E5%AD%A6%E4%B9%A0/" title="Koa2-学习"><img class="post-bg" src="/images/Koa2/koa2-bj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Koa2-学习"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/04/15/Koa2-%E5%AD%A6%E4%B9%A0/" title="Koa2-学习">Koa2-学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-04-15T13:33:25.000Z" title="发表于 2024-04-15 21:33:25">2024-04-15</time></span></div><div class="content">koa2框架介绍Koa2是一个基于Node.js的Web框架，它使用了ES6的语法和async/await特性，使得编写异步代码更加简单和优雅。Koa2的核心思想是中间件，它允许开发者将应用程序拆分成小的、可重用的部分，从而使得代码更加模块化和易于维护。Koa2还提供了一些常用的中间件，如路由、静态文件服务、错误处理等，使得开发者可以更加快速地构建Web应用程序。总的来说，Koa2是一个轻量级、灵活、易于扩展的Web框架，适合用于构建中小型的Web应用程序。
-Koa2 的特点和优势
-简单易用：Koa2 的 API 设计简洁明了，易于理解和使用。它提供了一组简单的方法和中间件来处理请求和响应，使开发者可以更专注于业务逻辑的实现。
-异步流程控制：Koa2 基于 ES6 的异步特性，使用 async/await 来处理异步操作，使得代码更加清晰、可读性更强。开发者可以使用 async/await 来处理异步任务，避免了回调地狱和复杂的错误处理。
-洋葱模型：Koa2 的中间件机制采用了洋葱模型，使得中间件的处理顺序更加清晰和可控。每个中间件都可以在请求前后进行处理 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2024/02/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="面试题总结"><img class="post-bg" src="/../images/%E9%9D%A2%E8%AF%95%E9%A2%98/city.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试题总结"></a></div><div class="recent-post-info"><a class="article-title" href="/2024/02/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="面试题总结">面试题总结</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2024-02-18T12:56:40.000Z" title="发表于 2024-02-18 20:56:40">2024-02-18</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">css说一下css的盒模型。在HTML页面中的所有元素都可以看成是一个盒子
-
-盒子的组成：内容（content）、内边距（padding）、边框（border）、外边距（margin）
-
-  盒模型的类型：
-
-标准盒模型 margin + border + padding + content
-
-IE盒模型 margin + content（border + padding）
+  <!-- 公告弹窗 -->
+  <div class="announcement" id="announcement">
+    <h2 data-i18n="announcementTitle">🎉 V.02 新版本更新公告 🎉</h2>
+    <p data-i18n="announcementContent">我们为您带来了以下新功能：</p>
+    <ul>
+      <li data-i18n="announcementItem1">内容支持语音朗读；</li>
+      <li data-i18n="announcementItem2">关键词控制主题开关；</li>
+      <li data-i18n="announcementItem3">代码块显示优化；</li>
+      <li data-i18n="announcementItem4">增加多语言界面；</li>
+      <li data-i18n="announcementItem5">样式优化等；</li>
+    </ul>
+    <button onclick="closeAnnouncement()" data-i18n="announcementClose">我知道了</button>
+  </div>
 
 
-
-IE盒模型的优点就是盒子实际的宽高就是自己设置的宽高，无需在进行计算，它的padding包含在content中
-
-  控制盒模型的模式：box-sizing：content-box（默认值 - 标准盒模型）、border-box（IE盒模型）;
-css选择器的优先级？
-css的特性：继承性、层叠性、优先级
-
-
-优先级：写css样式的时候，会给同一个元素添加多个样式，此时谁的权重高就显示谁的样式
-
-标签、类/伪类/属性、全局选择器、行内样式、id、!important
-
-!important &gt; 行内样式 &gt; id &gt; 类/伪类/属性 &gt; 标签 &gt; 全局选择器
-
-隐藏元素的方法有哪 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/11/28/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" title="前端加密方式"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端加密方式"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/28/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" title="前端加密方式">前端加密方式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-28T06:13:16.000Z" title="发表于 2023-11-28 14:13:16">2023-11-28</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content"> 数据加密方式有：
-
-单向加密、对称加密、非对称加密、加密盐、散列函数、数字签名。
-
-1、单向加密
-单向加密通过对数据进行摘要计算生成密文，密文不可逆推还原。只能加密，不能解密，常用于提取数据的指纹信息以此来验证数据的完整性。但是会引发雪崩效应（雪崩效应就是一种不稳定的平衡状态也是加密算法的一种特征，它指明文或密钥的少量变化会引起密文的很大变化，就像雪崩前，山上看上去很平静，但是只要有一点问题，就会造成一片大崩溃。 可以用在很多场合对于Hash码，雪崩效应是指少量消息位的变化会引起信息摘要的许多位变化。）
+  <!-- 打赏模态框 -->
+  <div class="donate-modal" id="donateModal">
+    <div class="donate-content">
+      <h2 data-i18n="donateTitle">支持作者</h2>
+      <p data-i18n="donateContent">如果觉得 Yuki AI 对你有帮助，欢迎打赏支持！</p>
+      <div class="qrcode-container">
+        <img src="/image/wechat-qrcode.jpg" alt="微信打赏二维码">
+        <img src="/image/alipay-qrcode.jpg" alt="支付宝打赏二维码">
+      </div>
+      <p data-i18n="donateThanks">感谢您的支持！</p>
+      <button onclick="closeDonateModal()" data-i18n="donateClose">关闭</button>
+    </div>
+  </div>
 
 
-算法代表：Base64，MD5，SHA。
+  <!-- 联系我们模态框 -->
+  <div class="contact-modal" id="contactModal">
+    <div class="contact-content">
+      <h2 data-i18n="contactTitle">联系我们</h2>
+      <p data-i18n="contactContent">如果您有任何问题或建议，欢迎通过以下方式联系我们：</p>
+      <ul>
+        <li data-i18n="contactEmail">邮箱：jky0802@163.com</li>
+        <li data-i18n="contactWeChat">微信：JKY010802</li>
+        <li data-i18n="contactQQ">QQ：2801141523</li>
+        <li>博客：<a href="https://jky0802.github.io/" target="_blank" rel="noopener noreferrer">访问我的博客</a></li>
+      </ul>
+      <button onclick="closeContactModal()" data-i18n="contactClose">关闭</button>
+    </div>
+  </div>
 
-1. Base64加密Base64是一种用来将二进制数据编码为可读文本形式的编码规范。在这个页面中，当用户点击“base64加密”按钮时，会调用一个JavaScript函数fn1()，该函数使用了window.btoa()方法进行Base64加密操作，并使用window.atob()方法进行解密操作。具体实现如下：
-123456789// base64加密var fn1=()=&gt;{  // 加密  var str = w ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/11/06/%E8%BF%91%E5%86%B5%E8%AE%B0%E4%BA%8B%20-%201/" title="近况记事 - 1"><img class="post-bg" src="https://img.meuicat.com/posts/2023/4/59.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="近况记事 - 1"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/06/%E8%BF%91%E5%86%B5%E8%AE%B0%E4%BA%8B%20-%201/" title="近况记事 - 1">近况记事 - 1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-06T08:59:40.000Z" title="发表于 2023-11-06 16:59:40">2023-11-06</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/">生活随笔</a></span></div><div class="content">使用终端命令查看已连接的wifi密码
-第一步：打开cmd(终端) =&gt; win+r =&gt; cmd
+  <!-- 朗读状态框 -->
+  <div class="speech-status" id="speechStatus" data-i18n="speechStatus">朗读状态：空闲</div>
 
-
-
-第二步：输入netsh wlan show profile 然后回车
-
-
-
-第三步：netsh wlan show profile name=数发集团 key=clear
-
-
-关键内容就是WiFi密码哦
-
-
-</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/10/29/%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="模式和环境变量"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="模式和环境变量"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/29/%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/" title="模式和环境变量">模式和环境变量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-29T12:29:16.000Z" title="发表于 2023-10-29 20:29:16">2023-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">一、模式模式是 Vue CLI 项目中一个重要的概念。默认情况下，一个 Vue CLI 项目有三个模式：
-
-
-development 模式用于 vue-cli-service serve
-test 模式用于 vue-cli-service test:unit
-production 模式用于 vue-cli-service build 和 vue-cli-service test:e2e
-
--mode你可以通过传递 –mode 选项参数为命令行覆写默认的模式。例如，如果你想要在构建命令中使用开发环境变量：
-1vue-cli-service build --mode development
-
-当运行 vue-cli-service 命令时，所有的环境变量都从对应的环境文件中载入。如果文件内部不包含 NODE_ENV 变量，它的值将取决于模式，例如，在 production 模式下被设置为 “production”，在 test 模式下被设置为 “test”，默认则是 “development”。
-NODE_ENV
-如果在环境中有默认的 NODE_ENV，你应该移除它或在运行 vue-cli ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/10/29/vue3+vite%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" title="vue3+vite项目优化"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="vue3+vite项目优化"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/10/29/vue3+vite%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" title="vue3+vite项目优化">vue3+vite项目优化</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-29T07:05:16.000Z" title="发表于 2023-10-29 15:05:16">2023-10-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">性能分析
-我们可以使用谷歌浏览器自带的 DevTools 进行性能分析 LightHouse
-
-
-
-
-
-参数介绍从Performance页的表现结果来看，得分52分，并提供了很多的时间信息，我们来解释下这些选项代表的意思：
-FCP (First Contentful Paint)：首次内容绘制的时间，浏览器第一次绘制DOM相关的内容，也是用户第一次看到页面内容的时间。
-Speed Index: 页面各个可见部分的显示平均时间，当我们的页面上存在轮播图或者需要从后端获取内容加载时，这个数据会被影响到。
-LCP (Largest Contentful Paint)：最大内容绘制时间，页面最大的元素绘制完成的时间。
-TTI（Time to Interactive）：从页面开始渲染到用户可以与页面进行交互的时间，内容必须渲染完毕，交互元素绑定的事件已经注册完成。
-TBT（Total Blocking Time）：记录了首次内容绘制到用户可交互之间的时间，这段时间内，主进程被阻塞，会阻碍用户的交互，页面点击无反应。
-CLS（Cumulative Layout Shift）：计算布局偏移值得分，会 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/08/29/ThreeJs-%E5%AD%A6%E4%B9%A0/" title="Three.js 学习"><img class="post-bg" src="/images/three.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Three.js 学习"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/08/29/ThreeJs-%E5%AD%A6%E4%B9%A0/" title="Three.js 学习">Three.js 学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-29T08:04:22.000Z" title="发表于 2023-08-29 16:04:22">2023-08-29</time></span></div><div class="content">简介
-Three.js 是一款运行在浏览器中的 3D 引擎，你可以用它创建各种三维场景，包括了摄影机、光影、材质等各种对象。你可 以在它的主页上看到许多精采的演示。不过，这款引擎目前还处在比较不成熟的开发阶段，其不够丰富的 API 以及匮乏的文档增加了初学者的学习难度（尤其是文档的匮乏）
-
-</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/08/27/H5-%E5%AD%A6%E4%B9%A0/" title="H5 学习"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="H5 学习"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/08/27/H5-%E5%AD%A6%E4%B9%A0/" title="H5 学习">H5 学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-08-27T05:44:07.000Z" title="发表于 2023-08-27 13:44:07">2023-08-27</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></span></div><div class="content">BUG记录新知识H5调用安卓和IOS相机权限123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566  var u = navigator.userAgent;  var isAndroid = u.indexOf("Android") &gt; -1 || u.indexOf("Adr") &gt; -1; //android终端  var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端  if (isAndroid) {  this.isShow = true;  console.log(window.plus.android, "安卓");  window.plus.android.requestPermissions(    ["androi ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="author_top is-center"><div class="card-info-avatar"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"></div><div class="author-status-box"><div class="author-status"><g-emoji class="g-emoji" alias="palm_tree" fallback-src="https://lskypro.acozycotage.net/LightPicture/2022/12/fe1dc0402e623096.jpg">🐟</g-emoji><span>认真摸鱼中</span></div></div></div><div class="author-info__name">JforikY</div><div class="author-info__description">归途也还可爱</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i></i><span>🔮 前往小家···</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/JKY0802" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="/jky0802@163.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content"><b><font color="#e66b6d">双</font> <font color="#e66d98">手</font> <font color="#e66cc6">合</font> <font color="#cc6de6">十</font> <font color="#9770e6">成</font> <font color="#6d93e6">为</font> <font color="#6fcde6">自</font> <font color="#72e6b6">己</font> <font color="#72e689">的</font> <font color="#99e670">神</font>, <font color="#cde670">自</font> <font color="#e6df72">己</font> <font color="#e6c073">所</font> <font color="#e6a271">信</font> <font color="#e6796f">念</font> <font color="#e65454">的</font> <font color="#e63333">即</font> <font color="#e62c2c">是</font> <font color="#e60101">信</font> <font color="#e60101">仰</font></b> <p align="center"><img src="https://haiyong.site/img/img-blog.csdnimg.cn/f7384c88956d4378b72e47548e19c9f8.gif" width="50" alt="mao"></p> <p align="center">微信号：JKY010802</p> <p align="center">QQ号：2801141523</p></div></div><div class="card-widget" id="card-poem"><div id="poem_sentence"></div><div id="poem_info"><div id="poem_dynasty"></div><div id="poem_author"></div></div></div><script src="https://cdn.jsdelivr.net/npm/js-heo@1.0.11/poem/jinrishici.js" charset="utf-8"></script><script type="text/javascript">jinrishici.load(function(result) {
-var sentence = document.querySelector("#poem_sentence")
-var author = document.querySelector("#poem_author")
-var dynasty = document.querySelector("#poem_dynasty")
-
-var sentenceText = result.data.content
-sentenceText = sentenceText.substr(0, sentenceText.length - 1);
-sentence.innerHTML = sentenceText
-dynasty.innerHTML = result.data.origin.dynasty
-author.innerHTML = result.data.origin.author + '《' + result.data.origin.title + '》'
-});</script><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/08/10/GIS%E5%AD%A6%E4%B9%A0%E4%B9%8BWebGIS%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="WebGIS开发基础"><img src="/images/Gis/background.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WebGIS开发基础"></a><div class="content"><a class="title" href="/2024/08/10/GIS%E5%AD%A6%E4%B9%A0%E4%B9%8BWebGIS%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/" title="WebGIS开发基础">WebGIS开发基础</a><time datetime="2024-08-10T15:16:25.000Z" title="发表于 2024-08-10 23:16:25">2024-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/08/10/Sequelize-%E5%AD%A6%E4%B9%A0/" title="Sequelize-学习"><img src="/images/Sequelize/logo.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Sequelize-学习"></a><div class="content"><a class="title" href="/2024/08/10/Sequelize-%E5%AD%A6%E4%B9%A0/" title="Sequelize-学习">Sequelize-学习</a><time datetime="2024-08-10T14:53:25.000Z" title="发表于 2024-08-10 22:53:25">2024-08-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/04/15/Koa2-%E5%AD%A6%E4%B9%A0/" title="Koa2-学习"><img src="/images/Koa2/koa2-bj.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Koa2-学习"></a><div class="content"><a class="title" href="/2024/04/15/Koa2-%E5%AD%A6%E4%B9%A0/" title="Koa2-学习">Koa2-学习</a><time datetime="2024-04-15T13:33:25.000Z" title="发表于 2024-04-15 21:33:25">2024-04-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/02/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="面试题总结"><img src="/../images/%E9%9D%A2%E8%AF%95%E9%A2%98/city.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="面试题总结"></a><div class="content"><a class="title" href="/2024/02/18/%E9%9D%A2%E8%AF%95%E9%A2%98%E6%80%BB%E7%BB%93/" title="面试题总结">面试题总结</a><time datetime="2024-02-18T12:56:40.000Z" title="发表于 2024-02-18 20:56:40">2024-02-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/11/28/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" title="前端加密方式"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端加密方式"></a><div class="content"><a class="title" href="/2023/11/28/%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86/" title="前端加密方式">前端加密方式</a><time datetime="2023-11-28T06:13:16.000Z" title="发表于 2023-11-28 14:13:16">2023-11-28</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/"><span class="card-category-list-name">前端</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/"><span class="card-category-list-name">后端</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/"><span class="card-category-list-name">生活随笔</span><span class="card-category-list-count">1</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 1.1em; color: #999">微信小程序</a> <a href="/tags/React/" style="font-size: 1.1em; color: #999">React</a> <a href="/tags/TypeScript/" style="font-size: 1.1em; color: #999">TypeScript</a> <a href="/tags/WebGIS/" style="font-size: 1.1em; color: #999">WebGIS</a> <a href="/tags/Vue/" style="font-size: 1.5em; color: #99a9bf">Vue</a> <a href="/tags/uniApp/" style="font-size: 1.1em; color: #999">uniApp</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 1.1em; color: #999">前端</a> <a href="/tags/NodeJs/" style="font-size: 1.3em; color: #99a1ac">NodeJs</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/04/"><span class="card-archive-list-date">四月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/02/"><span class="card-archive-list-date">二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/08/"><span class="card-archive-list-date">八月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><span class="card-archive-list-count">7</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">18</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">36.1k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastpushdate="2024-08-10T15:54:13.437Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">©2021 - 2024 <i id="heartbeat" class="fa fas fa-heartbeat"></i> By JforikY</div><div class="footer_custom_text">✧愿所得皆所期✧<br>
-<img src="https://haiyong.site/img/icp.png" style="position:relative;top:4px">
-<a href="https://beian.miit.gov.cn/#/Integrated/index" style="color:white" target="_blank">鲁ICP备2023037430号</a></div></div><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/HCLonely/images@master/others/heartbeat.min.css"></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>window.typedJSFn = {
-  init: (str) => {
-    window.typed = new Typed('#subtitle', Object.assign({
-      strings: str,
-      startDelay: 300,
-      typeSpeed: 150,
-      loop: true,
-      backSpeed: 50,
-    }, null))
-  },
-  run: (subtitleType) => {
-    if (true) {
-      if (typeof Typed === 'function') {
-        subtitleType()
-      } else {
-        getScript('https://cdn.jsdelivr.net/npm/typed.js/dist/typed.umd.min.js').then(subtitleType)
-      }
-    } else {
-      subtitleType()
-    }
-  }
-}
-</script><script>function subtitleType () {
-  if (true) {
-    typedJSFn.init(["知我者，谓我心忧；","不知我者，谓我何求。","—「诗经·国风·王风·黍离」"])
-  } else {
-    document.getElementById("subtitle").textContent = '知我者，谓我心忧；'
-  }
-}
-typedJSFn.run(subtitleType)</script></div><div class="aplayer no-destroy" data-id="2056174140" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listfolded="false" data-order="random" data-preload="none" data-autoplay="false" muted=""></div>
-<div><canvas id="snow" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;pointer-events:none"></canvas></div> <script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script> <script async="" type="text/javascript" src="https://cdn.jsdelivr.net/gh/Candinya/Kratos-Rebirth@latest/source/js/snow.min.js"></script>
-<script async="" src="/js/title.js"></script>
-<script async="" src="/js/console.js"></script>
-<script async="" data-pjax="" src="/js/anzhiyu.js"></script> <script async="" data-pjax="" src="/js/anzhiyufunction.js"></script> <script async="" src="/js/anzhiyuOnlyOne.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
-POWERMODE.shake = true;
-POWERMODE.mobile = false;
-document.body.addEventListener('input', POWERMODE);
-</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="true" async="async"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
-
-var pjax = new Pjax({
-  elements: 'a:not([target="_blank"])',
-  selectors: pjaxSelectors,
-  cacheBust: false,
-  analytics: false,
-  scrollRestoration: false
-})
-
-document.addEventListener('pjax:send', function () {
-
-  // removeEventListener scroll 
-  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
-  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
-
-  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
   
-  if (window.aplayers) {
-    for (let i = 0; i < window.aplayers.length; i++) {
-      if (!window.aplayers[i].options.fixed) {
-        window.aplayers[i].destroy()
-      }
-    }
-  }
+ 
 
-  typeof typed === 'object' && typed.destroy()
 
-  //reset readmode
-  const $bodyClassList = document.body.classList
-  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+  <!-- 02 -->
+  <script src="/js/v02.js"></script>
 
-  typeof disqusjs === 'object' && disqusjs.destroy()
-})
+  <!-- 01 -->
+  <script src="/js/v01.js"></script>
 
-document.addEventListener('pjax:complete', function () {
-  window.refreshFn()
 
-  document.querySelectorAll('script[data-pjax]').forEach(item => {
-    const newScript = document.createElement('script')
-    const content = item.text || item.textContent || item.innerHTML || ""
-    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
-    newScript.appendChild(document.createTextNode(content))
-    item.parentNode.replaceChild(newScript, item)
-  })
+</body>
 
-  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
-
-  typeof chatBtnFn === 'function' && chatBtnFn()
-  typeof panguInit === 'function' && panguInit()
-
-  // google analytics
-  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
-
-  // baidu analytics
-  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
-
-  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
-
-  // prismjs
-  typeof Prism === 'object' && Prism.highlightAll()
-})
-
-document.addEventListener('pjax:error', (e) => {
-  if (e.request.status === 404) {
-    pjax.loadUrl('/404.html')
-  }
-})</script><script async="" data-pjax="" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><div id="nav-music"><div id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()">播放音乐</div><meting-js id="2056174140" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="random"></meting-js></div></body></html>
+</html>
