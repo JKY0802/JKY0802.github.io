@@ -199,3 +199,37 @@
     /* 小屏幕缩小 */
   }
 }
+
+
+
+
+.sidebar {
+  width: 220px;
+  background: #f7f7f7;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  transition: width 0.2s;
+  overflow: auto;
+  z-index: 1000;
+}
+.sidebar.collapsed {
+  width: 40px;
+}
+.session-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+.session-item.active {
+  background: #e0e0e0;
+}
+.session-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

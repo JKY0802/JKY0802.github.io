@@ -116,7 +116,7 @@ async function sendMessage() {
   }
 
 
-  const girlfriendName = localStorage.getItem('sweetheartName') || '秦妞妞'; // 默认值
+  const girlfriendName = localStorage.getItem('sweetheartName') || '陈梦瑶'; // 默认值
 
   // 浪漫关键词触发逻辑
   if (message.includes('谁是世界上最温柔善良的女孩') ||
@@ -290,7 +290,7 @@ function addMessage(content, isUser) {
   // 构造消息区域，非用户消息增加独立 footer-container 放按钮和时间戳
   messageDiv.innerHTML = `
     <div class="avatar">
-      ${isUser ? userPronoun : '<img src="/image/ai-avatar.jpg" alt="AI 头像" width="40" height="40" style="border-radius: 50%;">'}
+      ${isUser ? userPronoun : '<img src="./image/ai-avatar.jpg" alt="AI 头像" width="40" height="40" style="border-radius: 50%;">'}
     </div>
     <div class="content">
       ${messageHtml}
@@ -542,4 +542,70 @@ function createRomanticEffect() {
   setTimeout(() => {
     document.body.classList.remove('romantic-glow');
   }, 2000);
+}
+
+
+
+
+// 多会话全局变量初始化
+let chatSessions = JSON.parse(localStorage.getItem('chatSessions')) || {};
+let currentSessionId = localStorage.getItem('currentSessionId') || null;
+
+// 页面加载时自动渲染会话列表和历史
+window.addEventListener('DOMContentLoaded', () => {
+  // 如果没有会话则自动新建一个
+  if (!currentSessionId || !chatSessions[currentSessionId]) {
+    const id = 'session_' + Date.now();
+    chatSessions[id] = { title: '新会话', history: [] };
+    currentSessionId = id;
+    localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+    localStorage.setItem('currentSessionId', id);
+  }
+  renderSessionList();
+  renderChatHistory();
+});
+
+function createNewSession() {
+  const id = 'session_' + Date.now();
+  chatSessions[id] = { title: '新会话', history: [] };
+  localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+  switchSession(id);
+}
+
+function switchSession(id) {
+  currentSessionId = id;
+  localStorage.setItem('currentSessionId', id);
+  renderChatHistory();
+  renderSessionList();
+}
+
+function deleteSession(id) {
+  delete chatSessions[id];
+  localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+  if (currentSessionId === id) {
+    const keys = Object.keys(chatSessions);
+    currentSessionId = keys.length ? keys[0] : null;
+    localStorage.setItem('currentSessionId', currentSessionId);
+  }
+  renderChatHistory();
+  renderSessionList();
+}
+
+function renameSessionPrompt(id) {
+  const newTitle = prompt('请输入新会话名称', chatSessions[id].title || '');
+  if (newTitle) {
+    chatSessions[id].title = newTitle;
+    localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+    renderSessionList();
+  }
+}
+
+function getCurrentChatHistory() {
+  return chatSessions[currentSessionId]?.history || [];
+}
+function setCurrentChatHistory(history) {
+  if (chatSessions[currentSessionId]) {
+    chatSessions[currentSessionId].history = history;
+    localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+  }
 }

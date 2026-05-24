@@ -484,3 +484,137 @@ a:hover {
     background-color: inherit;
   }
 }
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 260px;
+  background: #f7f8fa;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.03);
+  z-index: 1200;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s cubic-bezier(.4,0,.2,1);
+}
+.sidebar.collapsed {
+  width: 60px;
+}
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 10px 20px;
+  font-weight: bold;
+  font-size: 18px;
+  border-bottom: 1px solid #e5e7eb;
+}
+.sidebar-logo img {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.sidebar-toggle-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 22px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 4px 8px;
+  transition: background 0.15s;
+}
+.sidebar-toggle-btn:hover {
+  background: #e5e7eb;
+}
+.session-list-wrapper {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px 0;
+}
+.session-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  margin: 6px 10px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.session-item.active {
+  background: #e0e7ef;
+}
+.session-item:hover {
+  background: #f0f4fa;
+}
+.session-title {
+  flex: 1;
+  font-size: 15px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: text;
+}
+.session-item button {
+  margin-left: 6px;
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 15px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.session-item button:hover {
+  background: #e5e7eb;
+  color: #147EFB;
+}
+.sidebar-footer {
+  padding: 18px 20px;
+  border-top: 1px solid #e5e7eb;
+}
+.new-session-btn {
+  width: 100%;
+  background: #147EFB;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 10px 0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.new-session-btn:hover {
+  background: #0e5ec7;
+}
+.sidebar-expand-btn {
+  position: fixed;
+  left: 10px;
+  top: 50px;
+  width: 36px;
+  height: 36px;
+  background: #147EFB;
+  color: #fff;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 1300;
+  transition: opacity 0.2s;
+}
+.sidebar:not(.collapsed) ~ .sidebar-expand-btn {
+  display: none;
+}
+.sidebar button:hover {
+  background: #0e5ec7;
+}

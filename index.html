@@ -5,15 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yuki AI - 探索未知之境</title>
-  <link rel="icon" href="/image/favicon.png" type="image/x-icon">
+  <link rel="icon" href="./image/favicon.png" type="image/x-icon">
 
   <!-- Highlight.js 库及样式 -->
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script> -->
-
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-light.min.css">
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/atom-one-light.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 
   <canvas id="heartCanvas" style="position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999;"></canvas>
 
@@ -24,10 +20,10 @@
 
 
   <!-- 01 -->
-  <link rel="stylesheet" href="/css/v01.css">
+  <link rel="stylesheet" href="./css/v01.css">
 
   <!-- 02 -->
-  <link rel="stylesheet" href="/css/v02.css">
+  <link rel="stylesheet" href="./css/v02.css">
 
 </head>
 
@@ -59,7 +55,7 @@
       </div>
       <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">EN</button>
     </div>
-    <audio id="loveSong" src="/music/唯一.mp3" preload="auto"></audio>
+    <audio id="loveSong" src="./music/唯一.mp3" preload="auto"></audio>
 
 
     <div class="chat-container" id="chatContainer"></div>
@@ -98,8 +94,8 @@
       <h2 data-i18n="donateTitle">支持作者</h2>
       <p data-i18n="donateContent">如果觉得 Yuki AI 对你有帮助，欢迎打赏支持！</p>
       <div class="qrcode-container">
-        <img src="/image/wechat-qrcode.jpg" alt="微信打赏二维码">
-        <img src="/image/alipay-qrcode.jpg" alt="支付宝打赏二维码">
+        <img src="./image/wechat-qrcode.jpg" alt="微信打赏二维码">
+        <img src="./image/alipay-qrcode.jpg" alt="支付宝打赏二维码">
       </div>
       <p data-i18n="donateThanks">感谢您的支持！</p>
       <button onclick="closeDonateModal()" data-i18n="donateClose">关闭</button>
@@ -126,14 +122,27 @@
   <div class="speech-status" id="speechStatus" data-i18n="speechStatus">朗读状态：空闲</div>
 
   
- 
+ <!-- 新建会话 -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo"> <img src="./image/ai-avatar.jpg" style="width:32px;height:32px;border-radius:8px;vertical-align:middle;"> </span>
+      <button class="sidebar-toggle-btn" onclick="toggleSidebar()"> <span class="icon">≡</span> </button>
+    </div>
+    <div class="session-list-wrapper">
+      <div id="sessionList"></div>
+    </div>
+    <div class="sidebar-footer">
+      <button class="new-session-btn" onclick="createNewSession()"> <span class="icon">＋</span> 新建会话</button>
+    </div>
+  </div>
+  <div id="sidebarExpandBtn" class="sidebar-expand-btn" onclick="toggleSidebar()" style="display:none;">▶</div>
 
 
   <!-- 02 -->
-  <script src="/js/v02.js"></script>
+  <script src="./js/v02.js"></script>
 
   <!-- 01 -->
-  <script src="/js/v01.js"></script>
+  <script src="./js/v01.js"></script>
 
 
 </body>
