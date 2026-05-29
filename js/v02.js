@@ -34,35 +34,54 @@ function updateAiMessageContent(aiMessageDiv, markdownContent) {
 // 自定义 marked 渲染器
 const renderer = new marked.Renderer();
 
+function getCodeCopyLabel(done = false) {
+  const lang = localStorage.getItem("language") || "zh";
+  const copyText = translations?.[lang]?.copyCode || '复制';
+  const doneText = translations?.[lang]?.copiedCode || '已复制';
+  return done ? doneText : copyText;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 renderer.code = function (code, language, isEscaped) {
-  // 如果 code 是对象，提取 text 属性
-  if (typeof code === 'object' && code.text !== undefined) {
-    code = code.text; // 提取代码内容
+  // marked 新版本会把代码块作为 token 对象传入。
+  if (typeof code === 'object' && code !== null) {
+    language = code.lang || code.language || language;
+    code = code.text || code.raw || '';
   }
 
   // 确保 code 是一个字符串
   if (typeof code !== 'string') {
     console.warn('代码块内容不是字符串:', code);
-    code = ''; // 如果 code 不是字符串，设置为空字符串
+    code = '';
   }
 
-  code = code.trim();
+  code = code.replace(/\n$/, '');
+  const normalizedLanguage = (language || '').trim().split(/\s+/)[0];
+  const safeLanguage = normalizedLanguage ? normalizedLanguage.replace(/[^\w-]/g, '') : 'plaintext';
+  const languageLabel = normalizedLanguage || 'text';
 
-  // language = language || 'plaintext';
-
-
-  // 自动高亮：如果 language 存在，则使用 hljs.highlight，否则自动检测
-  const highlighted = language && hljs.getLanguage(language)
-    ? hljs.highlight(code, { language }).value
-    : hljs.highlightAuto(code).value;
+  const highlighted = typeof hljs !== 'undefined'
+    ? (safeLanguage && hljs.getLanguage(safeLanguage)
+      ? hljs.highlight(code, { language: safeLanguage }).value
+      : hljs.highlightAuto(code).value)
+    : escapeHtml(code);
 
   // 返回的 HTML 包含一个复制按钮（class="copy-code-btn"）以及 code 块
   return `
     <div class="code-block-container">
-      <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-      <pre class="hljs">
-        <code class="language-${language}">${highlighted}</code>
-      </pre>
+      <div class="code-block-header">
+        <span class="code-language">${escapeHtml(languageLabel)}</span>
+        <button class="copy-code-btn" type="button" onclick="copyCode(this)">${getCodeCopyLabel()}</button>
+      </div>
+      <pre class="hljs"><code class="language-${safeLanguage}">${highlighted}</code></pre>
     </div>
   `;
 };
@@ -70,24 +89,50 @@ renderer.code = function (code, language, isEscaped) {
 
 // 配置 marked 使用自定义 renderer
 marked.setOptions({
-  // renderer: renderer,
-  highlight: function (code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(code, { language }).value;
-  },
+  renderer: renderer,
+  gfm: true,
+  breaks: true,
   langPrefix: 'hljs language-',
 });
 
 
+function writeTextToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+
+  return new Promise((resolve, reject) => {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    textarea.style.top = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+
+    try {
+      const copied = document.execCommand('copy');
+      document.body.removeChild(textarea);
+      copied ? resolve() : reject(new Error('复制命令不可用'));
+    } catch (error) {
+      document.body.removeChild(textarea);
+      reject(error);
+    }
+  });
+}
+
 function copyCode(btn) {
-  const codeBlock = btn.parentElement.querySelector('code');
+  const codeBlock = btn.closest('.code-block-container')?.querySelector('code');
   if (!codeBlock) return;
-  const codeText = codeBlock.innerText;
-  navigator.clipboard.writeText(codeText).then(() => {
+  const codeText = codeBlock.textContent;
+  writeTextToClipboard(codeText).then(() => {
     const originalText = btn.textContent;
-    btn.textContent = 'Copied!';
+    btn.textContent = getCodeCopyLabel(true);
+    btn.classList.add('copied');
     setTimeout(() => {
       btn.textContent = originalText;
+      btn.classList.remove('copied');
     }, 2000);
   }).catch(err => {
     console.error('复制代码失败', err);
@@ -102,8 +147,15 @@ const translations = {
     headerTitle: "Yuki AI",
     clearChat: "Clear Chat",
     switchTheme: "Switch Theme",
+    themeLight: "Light Mode",
+    themeDark: "Dark Mode",
     donate: "Donate",
     contact: "Contact Us",
+    newSession: "New Chat",
+    renameSession: "Rename",
+    deleteSession: "Delete",
+    copyCode: "Copy",
+    copiedCode: "Copied",
     voiceInput: "Voice Input",
     send: "Send",
     inputPlaceholder: "Type your question...",
@@ -133,8 +185,15 @@ const translations = {
     headerTitle: "Yuki AI",
     clearChat: "清空聊天",
     switchTheme: "切换主题",
+    themeLight: "白天模式",
+    themeDark: "黑夜模式",
     donate: "打赏",
     contact: "联系我们",
+    newSession: "新建会话",
+    renameSession: "重命名",
+    deleteSession: "删除",
+    copyCode: "复制",
+    copiedCode: "已复制",
     voiceInput: "语音输入",
     send: "发送",
     inputPlaceholder: "输入你的问题...",
@@ -206,7 +265,15 @@ function updateLanguage(lang) {
   // 更新切换按钮文字：显示当前语言标识
   document.getElementById("lang-toggle").innerText = lang.toUpperCase();
   const currentTheme = document.body.getAttribute('data-theme') === 'dark';
-  // setTheme(currentTheme);
+  if (typeof setTheme === 'function') {
+    setTheme(currentTheme);
+  }
+  if (typeof renderSessionList === 'function') {
+    renderSessionList();
+  }
+  document.querySelectorAll('.copy-code-btn:not(.copied)').forEach(btn => {
+    btn.textContent = getCodeCopyLabel();
+  });
 }
 
 function toggleLanguage() {
@@ -306,6 +373,25 @@ function toggleSidebar() {
     expandBtn.style.display = 'none';
   }
 }
+
+let responsiveSidebarInitialized = false;
+
+function applyResponsiveSidebarState() {
+  const sidebar = document.getElementById('sidebar');
+  const expandBtn = document.getElementById('sidebarExpandBtn');
+  if (!sidebar || !expandBtn) return;
+
+  if (window.innerWidth <= 760 && !responsiveSidebarInitialized) {
+    sidebar.classList.add('collapsed');
+    expandBtn.style.display = 'flex';
+    responsiveSidebarInitialized = true;
+  } else if (window.innerWidth > 760) {
+    responsiveSidebarInitialized = false;
+  }
+}
+
+document.addEventListener('DOMContentLoaded', applyResponsiveSidebarState);
+window.addEventListener('resize', applyResponsiveSidebarState);
 
 
 

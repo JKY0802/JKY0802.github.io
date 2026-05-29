@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Yuki AI - 探索未知之境</title>
   <link rel="icon" href="./image/favicon.png" type="image/x-icon">
 
@@ -24,6 +24,9 @@
 
   <!-- 02 -->
   <link rel="stylesheet" href="./css/v02.css">
+
+  <!-- 03 -->
+  <link rel="stylesheet" href="./css/v03.css">
 
 </head>
 
@@ -73,16 +76,31 @@
     </div>
   </div>
 
+  <!-- 旧公告弹窗（V.02，保留注释备份）
+  <div class="announcement" id="announcement-v02">
+    <h2>🎉 V.02 新版本更新公告 🎉</h2>
+    <p>我们为您带来了以下新功能：</p>
+    <ul>
+      <li>内容支持语音朗读；</li>
+      <li>关键词控制主题开关；</li>
+      <li>代码块显示优化；</li>
+      <li>增加多语言界面；</li>
+      <li>样式优化等；</li>
+    </ul>
+    <button>我知道了</button>
+  </div>
+  -->
+
   <!-- 公告弹窗 -->
   <div class="announcement" id="announcement">
-    <h2 data-i18n="announcementTitle">🎉 V.02 新版本更新公告 🎉</h2>
-    <p data-i18n="announcementContent">我们为您带来了以下新功能：</p>
+    <h2 data-i18n="announcementTitle">🎉 V.03 体验优化更新公告 🎉</h2>
+    <p data-i18n="announcementContent">这次我们重点优化了聊天体验与移动端可用性：</p>
     <ul>
-      <li data-i18n="announcementItem1">内容支持语音朗读；</li>
-      <li data-i18n="announcementItem2">关键词控制主题开关；</li>
-      <li data-i18n="announcementItem3">代码块显示优化；</li>
-      <li data-i18n="announcementItem4">增加多语言界面；</li>
-      <li data-i18n="announcementItem5">样式优化等；</li>
+      <li data-i18n="announcementItem1">全新的 iOS 风格界面与移动端适配；</li>
+      <li data-i18n="announcementItem2">多会话独立保存，切换会话不再串内容；</li>
+      <li data-i18n="announcementItem3">AI 回复 Markdown 排版与代码块复制体验升级；</li>
+      <li data-i18n="announcementItem4">发送后自动跟随到底部，阅读回答更顺手；</li>
+      <li data-i18n="announcementItem5">中英文切换、朗读音色和侧边栏收起态优化；</li>
     </ul>
     <button onclick="closeAnnouncement()" data-i18n="announcementClose">我知道了</button>
   </div>
@@ -132,7 +150,7 @@
       <div id="sessionList"></div>
     </div>
     <div class="sidebar-footer">
-      <button class="new-session-btn" onclick="createNewSession()"> <span class="icon">＋</span> 新建会话</button>
+      <button class="new-session-btn" onclick="createNewSession()"> <span class="icon">＋</span> <span class="text" data-i18n="newSession">新建会话</span></button>
     </div>
   </div>
   <div id="sidebarExpandBtn" class="sidebar-expand-btn" onclick="toggleSidebar()" style="display:none;">▶</div>
@@ -143,6 +161,9 @@
 
   <!-- 01 -->
   <script src="./js/v01.js"></script>
+
+  <!-- 03 -->
+  <script src="./js/v03.js"></script>
 
 
 </body>

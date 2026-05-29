@@ -22,12 +22,11 @@ function setTheme(dark) {
   document.body.setAttribute('data-theme', dark ? 'dark' : 'light');
   const themeBtn = document.querySelector('.theme-toggle');
   const currentLang = localStorage.getItem("language") || "zh";
+  const langPack = typeof translations !== 'undefined' ? translations[currentLang] : null;
+  const label = langPack ? (dark ? langPack.themeDark : langPack.themeLight) : (dark ? '黑夜模式' : '白天模式');
+  if (!themeBtn) return;
 
-  if (currentLang === "zh") {
-    themeBtn.textContent = dark ? '🌙 夜间模式' : '🌞 白天模式';
-  } else {
-    themeBtn.textContent = dark ? '🌙 Dark Mode' : '🌞 Light Mode';
-  }
+  themeBtn.innerHTML = `<span class="icon">${dark ? '🌙' : '🌞'}</span><span class="text">${label}</span>`;
 }
 
 let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || []
@@ -39,6 +38,9 @@ function clearChat() {
   chatContainer.innerHTML = ''
   chatHistory = []
   localStorage.removeItem('chatHistory')
+  if (typeof setCurrentChatHistory === 'function') {
+    setCurrentChatHistory([])
+  }
 }
 
 let isSpeaking = false; // 是否正在朗读
@@ -162,6 +164,10 @@ async function sendMessage() {
 
   if (!message) return
 
+  if (!currentSessionId || !chatSessions[currentSessionId]) {
+    createNewSession()
+  }
+  const targetSessionId = currentSessionId
 
   const btn = document.getElementById('sendBtn')
   btn.disabled = true
@@ -169,6 +175,7 @@ async function sendMessage() {
 
   // 立即显示用户消息
   addMessage(message, true)
+  appendMessageToSession(targetSessionId, { content: message, isUser: true })
 
   // 清空输入框
   input.value = ''
@@ -212,12 +219,6 @@ async function sendMessage() {
                 const contentHtml = markdownToHtml(assistantMessage)
                 const contentContainer = aiMessageDiv.querySelector('.content')
                 contentContainer.innerHTML = contentHtml
-
-
-                if (typeof hljs !== 'undefined') {
-                  hljs.highlightAll();
-                }
-
 
                 // 创建或更新按钮容器，避免和 Markdown 内容混在一起
                 let footerContainer = aiMessageDiv.querySelector('.footer-container')
@@ -263,16 +264,22 @@ async function sendMessage() {
         }
       }
 
-      chatHistory.push({ content: message, isUser: true })
-      chatHistory.push({ content: assistantMessage, isUser: false })
-      localStorage.setItem('chatHistory', JSON.stringify(chatHistory))
+      appendMessageToSession(targetSessionId, { content: assistantMessage, isUser: false })
+      if (currentSessionId === targetSessionId && !document.body.contains(aiMessageDiv)) {
+        renderChatHistory()
+      }
     } catch (error) {
       console.error('Error:', error)
-      aiMessageDiv.querySelector('.content').innerText = '请求出错，请稍后再试'
+      const errorMessage = '请求出错，请稍后再试'
+      aiMessageDiv.querySelector('.content').innerText = errorMessage
+      appendMessageToSession(targetSessionId, { content: errorMessage, isUser: false })
+      if (currentSessionId === targetSessionId && !document.body.contains(aiMessageDiv)) {
+        renderChatHistory()
+      }
     }
 
     btn.disabled = false
-    btn.textContent = '发送'
+    btn.textContent = translations?.[localStorage.getItem("language") || "zh"]?.send || '发送'
   }, 0)
 }
 
@@ -441,6 +448,29 @@ function detectLanguage(text) {
   return 'zh-CN'; // 默认中文
 }
 
+function getPreferredVoice(lang) {
+  const voices = window.speechSynthesis?.getVoices?.() || [];
+  if (!voices.length) return null;
+
+  const isChinese = lang.startsWith('zh');
+  const preferredNames = isChinese
+    ? ['Xiaoxiao', 'Tingting', 'Mei-Jia', 'Sin-ji', 'Yu-shu', 'Hanhan', 'Google 普通话', 'Google 國語', 'Microsoft Xiaoxiao']
+    : ['Samantha', 'Ava', 'Susan', 'Karen', 'Daniel', 'Google US English', 'Microsoft Aria'];
+
+  const langMatched = voices.filter(voice => {
+    const voiceLang = (voice.lang || '').toLowerCase();
+    return isChinese ? voiceLang.startsWith('zh') : voiceLang.startsWith('en');
+  });
+
+  return preferredNames
+    .map(name => langMatched.find(voice => voice.name.includes(name)))
+    .find(Boolean) || langMatched.find(voice => voice.localService) || langMatched[0] || voices[0];
+}
+
+if ('speechSynthesis' in window) {
+  window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+}
+
 function speakText(text) {
   if (!text || isSpeaking) return;
 
@@ -449,12 +479,14 @@ function speakText(text) {
 
   // 设置语言
   utterance.lang = detectLanguage(text);
+  utterance.voice = getPreferredVoice(utterance.lang);
 
-  // 设置语速（0.1 到 10，默认 1）
-  utterance.rate = 1;
+  // 稍慢一点、更柔和一点，接近系统助手的自然朗读感。
+  utterance.rate = utterance.lang.startsWith('zh') ? 0.92 : 0.95;
 
   // 设置音高（0 到 2，默认 1）
-  utterance.pitch = 1;
+  utterance.pitch = utterance.lang.startsWith('zh') ? 1.08 : 1.04;
+  utterance.volume = 1;
 
   // 更新状态
   isSpeaking = true;
@@ -551,15 +583,46 @@ function createRomanticEffect() {
 let chatSessions = JSON.parse(localStorage.getItem('chatSessions')) || {};
 let currentSessionId = localStorage.getItem('currentSessionId') || null;
 
+function getSessionDefaultTitle() {
+  const lang = localStorage.getItem("language") || "zh";
+  return translations?.[lang]?.newSession || '新会话';
+}
+
+function isDefaultSessionTitle(title) {
+  return !title || title === '新会话' || title === 'New Chat';
+}
+
+function getSessionDisplayTitle(session, index) {
+  if (isDefaultSessionTitle(session?.title)) {
+    return getSessionDefaultTitle();
+  }
+  return session.title || `${getSessionDefaultTitle()} ${index + 1}`;
+}
+
+function getSessionShortTitle(title, index) {
+  const fallback = String(index + 1);
+  const normalizedTitle = (title || '').trim();
+  if (!normalizedTitle) return fallback;
+
+  if (normalizedTitle === 'New Chat') return 'Ne';
+  if (normalizedTitle === '新建会话' || normalizedTitle === '新会话') return '新';
+  return Array.from(normalizedTitle).slice(0, 2).join('') || fallback;
+}
+
 // 页面加载时自动渲染会话列表和历史
 window.addEventListener('DOMContentLoaded', () => {
   // 如果没有会话则自动新建一个
   if (!currentSessionId || !chatSessions[currentSessionId]) {
-    const id = 'session_' + Date.now();
-    chatSessions[id] = { title: '新会话', history: [] };
-    currentSessionId = id;
+    const existingIds = Object.keys(chatSessions);
+    if (existingIds.length) {
+      currentSessionId = existingIds[0];
+    } else {
+      const id = 'session_' + Date.now();
+      chatSessions[id] = { title: getSessionDefaultTitle(), history: chatHistory.slice() };
+      currentSessionId = id;
+    }
     localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
-    localStorage.setItem('currentSessionId', id);
+    localStorage.setItem('currentSessionId', currentSessionId);
   }
   renderSessionList();
   renderChatHistory();
@@ -567,7 +630,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 function createNewSession() {
   const id = 'session_' + Date.now();
-  chatSessions[id] = { title: '新会话', history: [] };
+  chatSessions[id] = { title: getSessionDefaultTitle(), history: [] };
   localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
   switchSession(id);
 }
@@ -584,7 +647,13 @@ function deleteSession(id) {
   localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
   if (currentSessionId === id) {
     const keys = Object.keys(chatSessions);
-    currentSessionId = keys.length ? keys[0] : null;
+    if (keys.length) {
+      currentSessionId = keys[0];
+    } else {
+      currentSessionId = 'session_' + Date.now();
+      chatSessions[currentSessionId] = { title: getSessionDefaultTitle(), history: [] };
+      localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+    }
     localStorage.setItem('currentSessionId', currentSessionId);
   }
   renderChatHistory();
@@ -592,7 +661,9 @@ function deleteSession(id) {
 }
 
 function renameSessionPrompt(id) {
-  const newTitle = prompt('请输入新会话名称', chatSessions[id].title || '');
+  const lang = localStorage.getItem("language") || "zh";
+  const promptText = lang === 'en' ? 'Enter a new chat name' : '请输入新会话名称';
+  const newTitle = prompt(promptText, getSessionDisplayTitle(chatSessions[id], 0));
   if (newTitle) {
     chatSessions[id].title = newTitle;
     localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
@@ -608,4 +679,77 @@ function setCurrentChatHistory(history) {
     chatSessions[currentSessionId].history = history;
     localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
   }
+}
+
+function appendMessageToSession(sessionId, messageEntry) {
+  if (!sessionId || !chatSessions[sessionId]) return;
+
+  const session = chatSessions[sessionId];
+  session.history = Array.isArray(session.history) ? session.history : [];
+  session.history.push(messageEntry);
+
+  if (messageEntry.isUser && isDefaultSessionTitle(session.title)) {
+    session.title = messageEntry.content.slice(0, 18) || getSessionDefaultTitle();
+  }
+
+  localStorage.setItem('chatSessions', JSON.stringify(chatSessions));
+
+  if (sessionId === currentSessionId) {
+    chatHistory = session.history;
+    localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+  }
+
+  renderSessionList();
+}
+
+function renderChatHistory() {
+  if (!chatContainer) return;
+
+  chatContainer.innerHTML = '';
+  chatHistory = getCurrentChatHistory();
+  chatHistory.forEach(item => {
+    addMessage(item.content, item.isUser);
+  });
+}
+
+function renderSessionList() {
+  const sessionList = document.getElementById('sessionList');
+  if (!sessionList) return;
+
+  sessionList.innerHTML = '';
+  Object.entries(chatSessions).forEach(([id, session], index) => {
+    const displayTitle = getSessionDisplayTitle(session, index);
+    const item = document.createElement('div');
+    item.className = `session-item${id === currentSessionId ? ' active' : ''}`;
+    item.title = displayTitle;
+    item.dataset.short = getSessionShortTitle(displayTitle, index);
+    item.onclick = () => switchSession(id);
+
+    const title = document.createElement('span');
+    title.className = 'session-title';
+    title.textContent = displayTitle;
+
+    const renameBtn = document.createElement('button');
+    renameBtn.type = 'button';
+    renameBtn.title = translations?.[localStorage.getItem("language") || "zh"]?.renameSession || '重命名';
+    renameBtn.textContent = '✎';
+    renameBtn.onclick = (event) => {
+      event.stopPropagation();
+      renameSessionPrompt(id);
+    };
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.type = 'button';
+    deleteBtn.title = translations?.[localStorage.getItem("language") || "zh"]?.deleteSession || '删除';
+    deleteBtn.textContent = '×';
+    deleteBtn.onclick = (event) => {
+      event.stopPropagation();
+      deleteSession(id);
+    };
+
+    item.appendChild(title);
+    item.appendChild(renameBtn);
+    item.appendChild(deleteBtn);
+    sessionList.appendChild(item);
+  });
 }
