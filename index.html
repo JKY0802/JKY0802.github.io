@@ -58,7 +58,7 @@
       </div>
       <button class="lang-toggle" id="lang-toggle" onclick="toggleLanguage()">EN</button>
     </div>
-    <audio id="loveSong" src="./music/唯一.mp3" preload="auto"></audio>
+    <audio id="loveSong" src="./music/唯一.mp3" preload="none"></audio>
 
 
     <div class="chat-container" id="chatContainer"></div>
@@ -112,8 +112,8 @@
       <h2 data-i18n="donateTitle">支持作者</h2>
       <p data-i18n="donateContent">如果觉得 Yuki AI 对你有帮助，欢迎打赏支持！</p>
       <div class="qrcode-container">
-        <img src="./image/wechat-qrcode.jpg" alt="微信打赏二维码">
-        <img src="./image/alipay-qrcode.jpg" alt="支付宝打赏二维码">
+        <img src="./image/wechat-qrcode.jpg" alt="微信打赏二维码" loading="lazy" decoding="async">
+        <img src="./image/alipay-qrcode.jpg" alt="支付宝打赏二维码" loading="lazy" decoding="async">
       </div>
       <p data-i18n="donateThanks">感谢您的支持！</p>
       <button onclick="closeDonateModal()" data-i18n="donateClose">关闭</button>
